@@ -1,0 +1,33 @@
+hijoDe(homero,lisa).
+hijoDe(homero, bart).
+hijoDe(homero, magui).
+hijoDe(abraham,homero).
+hijoDe(abraham,herr).
+hijoDe(clancy, marge).
+hijoDe(clancy, selma).
+hijoDe(selma, ling).
+
+esposo(abraham,mona).
+esposo(homero, marge).
+
+hermanoDe(Hijo, Hijo1):-
+hijoDe(Papa, Hijo),
+hijoDe(Papa, Hijo1),
+Hijo1\=Hijo.
+
+papaDe(Hijo,Papa):-
+hijoDe(Papa, Hijo).
+
+papaDe(Hijo, Mama):-
+esposo(Padre, Mama),
+hijoDe(Padre, Hijo).
+
+abueloDe(Nieto, Abuelo):-
+hijoDe(Padre, Nieto),
+hijoDe(Abuelo, Padre).
+
+tioDe(Sobrino, Tio):-
+hijoDe(Papa, Tio),
+hijoDe(Papa, Hermano),
+hijoDe(Hermano, Sobrino),
+Tio\=Hermano.
